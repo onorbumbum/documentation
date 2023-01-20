@@ -1,3 +1,5 @@
+.. _taxation/taxes:
+
 =====
 Taxes
 =====

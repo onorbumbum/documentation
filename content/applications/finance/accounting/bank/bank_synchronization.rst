@@ -1,5 +1,7 @@
 :show-content:
 
+.. _bank/bank-sync:
+
 ====================
 Bank synchronization
 ====================
