@@ -1,126 +1,113 @@
 =================
-Connect a Printer
+Connect a printer
 =================
 
-When using your *IoT Box* in Odoo, you could need to use a printer.
-Doing so is easy and convenient as it can be done in a few steps. Then,
-you can use it to print receipts, orders or even reports in different
-Odoo apps.
+A printer can be attached to the :abbr:`IoT (Internet of Things)` box on an Odoo database.
+Installation is easy and convenient and can be done in a few easy steps. The printer can be used to
+print receipts, labels, orders or even reports from the different Odoo apps. In addition printer
+actions can be assigned as an action on a trigger during the manufacturing process or added onto a
+*Quality Control Point* or *Quality Check*.
+
 
 Connection
 ==========
 
-The IoT Box supports printers connected through USB, network or Bluetooth.
-`Supported printers <https://www.odoo.com/page/iot-hardware>`__ will be
-detected automatically and will appear in the *Devices* list of your IoT app.
+The :abbr:`IoT (Internet of Things)` box supports printers connected through :abbr:`USB (Universal
+Serial Bus)`, network connection or Bluetooth. `Supported printers
+<https://www.odoo.com/page/iot-hardware>`__ will be detected automatically and will appear in the
+:guilabel:`Devices` list of the :menuselection:`IoT` app.
+
+.. image:: printer/printer-detected.png
+   :align: center
+   :alt: The printer as it would appear in the IoT app devices list.
 
 .. note::
-         The printer can take up to two minutes to appear in your devices list.
+   The printer can take up to two minutes to appear in the :menuselection:`IoT` app devices list.
 
-.. image:: printer/printer_01.png
-   :align: center
-
-Link the Printer
+Link the printer
 ================
 
-To Work Orders
---------------
-
-You can link *Work Orders* to printers via a *Quality Control Point*
-to print labels for manufactured products.
-
-To do so, you need to create a *Quality Control Point* from the
-*Quality* app. Then, you can select the correct manufacturing
-operation and the work order operation. In type, choose *Print Label*
-and hit save.
-
-.. image:: printer/printer_03.png
-   :align: center
-
-Now, each time you reach the quality control point for the chosen
-product, a *Print Label* button will appear.
-
-.. image:: printer/printer_04.png
-   :align: center
-
-To Reports
-----------
-
-You can also link a type of report to a certain printer. In the *IoT*
-app, go to the *Devices* menu and select the printer you want to set
-up.
-
-.. image:: printer/printer_05.png
-   :align: center
-
-Now, go to the *Printer Reports* tab.
-
-.. image:: printer/printer_06.png
-   :align: center
-
-Hit edit and then, click on *Add a line*. In the window that shows up,
-check all the types of reports that should be linked to this printer.
-Click on select and save.
-
-.. image:: printer/printer_07.png
-   :align: center
-
-Now, each time you click on *Print* in the control panel, instead of
-downloading a PDF, it will send it to the selected printer and
-automatically print it.
-
-Print Receipts from the PoS
+Link printer to work orders
 ---------------------------
 
-You can link a printer to your *Point of Sale* app so you can print
-receipts directly from your *PoS*.
+*Work Orders* can be linked to printers via a *Quality Control Point* to print labels for
+manufactured products.
 
-Doing so is really easy. Go to your *Point of Sale* app and open your
-*Point of Sale* settings, under *Configuration*. There, click on *Edit*
-and check the *IoT Box* feature. Then, choose your *Receipt Printer*
-from the dropdown.
+In the :menuselection:`Quality` app, a device can be set up on a :guilabel:`Quality Control Point`.
+Go to the :menuselection:`Quality Control --> Control Points` and open the :guilabel:`Control Point`
+which will be linked with the printer.
 
-.. image:: printer/printer_08.png
+.. note::
+   A *Manufacturing Operation* and *Work Order Operation* need to be attached to the *Quality
+   Control Point* before the :guilabel:`Type` will allow for :guilabel:`Print Label` to be
+   selected.
+
+Now, edit the :guilabel:`Control Point` by selecting the :guilabel:`Type` field and clicking on
+:guilabel:`Print Label` from the dropdown. A field called :guilabel:`Device` will appear where
+the attached *device* can be selected. :guilabel:`Save` the changes if required.
+
+.. image:: printer/printer-controlpoint.png
+   :align: center
+   :alt: This is the quality control point setup.
+
+The printer can be used with the selected :guilabel:`Quality Control Point`. When the
+:guilabel:`Quality Control Point` is reached during the manufacturing process, the database will
+prompt the operator to take a picture.
+
+.. image:: printer/printer-prompt.png
    :align: center
 
-Now, you will be able to print different kinds of tickets from your *POS*:
-**receipts**, **sale details** and **bills**.
+.. seealso::
+   In a *Quality Check* the :guilabel:`Type` of check can also be specified to :guilabel:`Print
+   Label`. Access *Quality Checks* by navigating to :menuselection:`Quality app --> Quality Control
+   --> Quality Checks --> New`.
 
-Receipts are printed once the order is validated. The process is
-automated when you enable the feature in your *PoS* configuration.
+.. seealso::
+   - :doc:`../../../inventory_and_mrp/manufacturing/quality_control/quality_control_points`
+   - :doc:`../../../inventory_and_mrp/manufacturing/quality_control/quality_alerts`
 
-Sales details can be printed by clicking on the printer icon on the
-navbar at the top of the *PoS*. It will print the details of the sales
-of the current day.
+Link a printer to a work center in the manufacturing app
+--------------------------------------------------------
 
-.. image:: printer/printer_09.png
-   :align: center
+To link the printer to an action, it needs to be configured on a *work center*. Navigate to
+:menuselection:`Manufacturing --> Configuration --> Work Centers`. Go to the :guilabel:`Work Center`
+the printer will be used in and add the device in the :guilabel:`IoT Triggers` tab under
+:guilabel:`Device` by selecting :guilabel:`Add a Line`. Then, it can be linked to either of the
+following :guilabel:`Actions`: :guilabel:`Print Labels`, :guilabel:`Print Operation`, or
+:guilabel:`Print Delivery Slip`. A key can be added to trigger the action.
 
-As for the bill, it is only available in restaurant mode. In your
-restaurant settings, activate *Print Bills* and a *Bill* button will
-appear in the left panel of the *PoS*.
+It should be noted that the trigger that is first in the list will be chosen first. So, the order
+matters and these triggers can be dragged into order.
 
-.. image:: printer/printer_10.png
-   :align: center
+.. note::
+   On the :guilabel:`work order` screen, a status graphic indicates whether the database is
+   correctly connected to the printer.
 
-Print Orders in the kitchen
+.. seealso::
+   :ref:`workcenter_iot`
+
+Link the printer to reports
 ---------------------------
 
-In restaurant mode, you can send order tickets to the kitchen.
+It's also possible to link a type of report to a certain printer. In the :menuselection:`IoT` app,
+go to the :menuselection:`Devices` menu and select the printer that needs to be configured.
 
-To do so, go to the *PoS* app and open your *PoS* settings. Then,
-tick *Order Printer*.
+Now, go to the :guilabel:`Printer Reports` tab. :guilabel:`Edit` the page and select :guilabel:`Add
+a line`. In the window that appears, check all the types of :guilabel:`Reports` that should be
+linked to this printer.
 
-.. image:: printer/printer_11.png
+.. image:: printer/printers-listed.png
    :align: center
+   :alt: The printer devices listed in the IoT Devices menu.
 
-Now, go to the *Printers* menu. Hit create, select the printer from
-the dropdown and, in the *Printer Product Categories* field, choose
-all the categories of products that should be printed on this printer.
+Now, each time :guilabel:`Print` is selected in the control panel, instead of downloading a PDF,
+Odoo will send the report to the selected printer and automatically print it.
 
-.. image:: printer/printer_12.png
-   :align: center
+.. seealso::
+   :doc:`POS Order Printing <../../../sales/point_of_sale/restaurant/kitchen_printing>`
 
-In the *PoS*, when you add or remove a product from one of the
-selected categories, the button *Order* will be green. If you click on
-it, the IoT Box will print a receipt on the corresponding printer.
+.. note::
+   Reports can also be configured in the :guilabel:`Technical Menu` while in :ref:`debug mode
+   <developer-mode>`. Navigate to :menuselection:`Settings App --> Technical Menu --> Actions -->
+   Reports`. The individual report can be found in this list, where the :guilabel:`IOT Device` can
+   be set on the report.
