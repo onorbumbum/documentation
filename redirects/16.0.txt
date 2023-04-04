@@ -35,6 +35,9 @@ applications/sales/subscriptions/sales_flow/upselling.rst applications/sales/sub
 
 # applications/websites
 
+applications/websites/livechat/overview/get_started.rst applications/websites/livechat/get_started.rst                                           # livechat/overview/get_started -> livechat/get_started
+applications/websites/livechat/overview/ratings.rst applications/websites/livechat/ratings.rst                                                   # overview/* -> *
+applications/websites/livechat/overview/responses.rst applications/websites/livechat/responses.rst                                               # overview/* -> *
 applications/websites/ecommerce/getting_started/catalog.rst applications/websites/ecommerce/managing_products/catalog.rst                        # /getting_started/catalog -> /managing_products/catalog
 applications/websites/ecommerce/getting_started/product_page.rst applications/websites/ecommerce/managing_products/products.rst                  # /getting_started/product_page -> /managing_products/products
 applications/websites/ecommerce/shopper_experience/payment_acquirer.rst applications/websites/ecommerce/shopper_experience/payment_providers.rst # payment_acquirer -> payment_providers
