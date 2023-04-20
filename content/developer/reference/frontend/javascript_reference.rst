@@ -1432,55 +1432,64 @@ char (FieldChar)
   - Supported field types: *char*
 
 date (FieldDate)
-  This is the default field type for fields of type *date*. Note that it also
-  works with datetime fields.  It uses the session timezone when formatting
-  dates.
+  This is the default field type for fields of type *date*. It consists of a text
+  box and a date picker.
 
-  - Supported field types: *date*, *datetime*
+  - Supported field types: *date*
 
   Options:
 
-  - datepicker: extra settings for the datepicker_ widget.
+  - min_date / max_date: sets limit dates for accepted values. By default, the earliest
+    accepted date is *1000-01-01* and the latest is *9999-12-31*.
+    Accepted values are: SQL-formatted dates (yyyy-MM-dd HH:mm:ss) or *today*.
 
   .. code-block:: xml
 
-      <field name="datefield" options='{"datepicker": {"daysOfWeekDisabled": [0, 6]}}'/>
+      <field name="datefield" options="{'min_date': 'today', 'max_date': '2023-12-31'}" />
+
+  - warn_future: displays a warning if the value is in the future (based on today).
+
+  .. code-block:: xml
+
+      <field name="datefield" options="{'warn_future': true}" />
 
 datetime (FieldDateTime)
-  This is the default field type for fields of type *datetime*.
+  This is the default field type for fields of type *datetime*. The values are always
+  in the client's timezone.
 
-  - Supported field types: *date*, *datetime*
+  - Supported field types: *datetime*
 
   Options:
 
-  - datepicker: extra settings for the datepicker_ widget.
+  - see FieldDate options
+
+  - rounding: increment used to generate available minutes in the time picker. This
+    does not affect the actual value, just the amount of available options in the
+    select dropdown (default: *5*).
 
   .. code-block:: xml
 
-      <field name="datetimefield" options='{"datepicker": {"daysOfWeekDisabled": [0, 6]}}'/>
+      <field name="datetimefield" options="{'rounding': 10}" />
 
 daterange (FieldDateRange)
-  This widget allows the user to select start and end date into a single picker.
+  This widget allows the user to select start and end date from a single picker.
 
   - Supported field types: *date*, *datetime*
 
   Options:
 
-  - related_start_date: apply on end date field to get start date value which
-    is used to display range in the picker.
-  - related_end_date: apply on start date field to get end date value which
-    is used to display range in the picker.
-  - picker_options: extra settings for picker.
+  - see FieldDate or FieldDateTime options
+
+  - end_date_field: field used to get/set the end value of the date range.
 
   .. code-block:: xml
 
-      <field name="start_date" widget="daterange" options='{"related_end_date": "end_date"}'/>
+      <field name="start_date" widget="daterange" options="{'end_date_field': 'end_date'}" />
 
 remaining_days (RemainingDays)
   This widget can be used on date and datetime fields. In readonly, it displays
-  the delta (in days) between the value of the field and today. The widget is
-  intended to be used for informative purpose: therefore the value cannot be
-  modified in edit mode.
+  the delta (in days) between the value of the field and today. The widget turns
+  into a regular date or datetime field in edit mode.
 
   - Supported field types: *date*, *datetime*
 
